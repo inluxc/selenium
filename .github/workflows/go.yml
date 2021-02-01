@@ -4,18 +4,15 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [1.13.x, 1.14.x, 1.15.x]
+        go-version: [1.13.x]
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - name: set environment variables
       uses: allenevans/set-env@v2.0.0
       with:
-        GO111MODULE: 'on' 
-
-    - name: Install dependencies
-      run: cd vendor && go run init.go --alsologtostderr --download_browsers --download_latest && cd ..
-      
+        GO111MODULE: 'on'
+        
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -23,6 +20,12 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: cd vendor && go run init.go --alsologtostderr --download_browsers --download_latest && cd ..
       
+    - name: GO FMT
+      run: ./testing/travis-ci-gofmt.sh
+
     - name: Test
-      run: go test ./...
+      run: ./testing/travis-ci-test.sh
