@@ -4,14 +4,14 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [1.13.x,1.14.x, 1.15.x]
+        go-version: [1.13.x, 1.14.x, 1.15.x]
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - name: set environment variables
       uses: allenevans/set-env@v2.0.0
       with:
-        GO111MODULE: on 
+        GO111MODULE: 'on' 
 
     - name: Install dependencies
       run: cd vendor && go run init.go --alsologtostderr --download_browsers --download_latest && cd ..
