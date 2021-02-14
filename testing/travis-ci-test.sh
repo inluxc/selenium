@@ -1,7 +1,6 @@
 #!/bin/bash
 # Run tests under Travis for continuous integration.
 
-sudo ls -la $HOME
-sudo chown $USER:$USER ~/.Xauthority
+ln -s "$XAUTHORITY" ~/.Xauthority
 
 go test -coverprofile=coverage.txt -covermode=atomic -test.v -timeout=20m ./...
