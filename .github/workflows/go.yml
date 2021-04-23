@@ -26,11 +26,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Run headless test
+    - name: gabrielbb/xvfb-action
       uses: GabrielBB/xvfb-action@v1
-      with:
-        working-directory: ./
-        run: npm test
+
       
     - name: Install dependencies
       run: cd vendor && go run init.go --alsologtostderr --download_browsers --download_latest && cd ..
