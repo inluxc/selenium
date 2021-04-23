@@ -26,18 +26,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: gabrielbb/xvfb-action
-      uses: GabrielBB/xvfb-action@v1
-
-      
     - name: Install dependencies
       run: cd vendor && go run init.go --alsologtostderr --download_browsers --download_latest && cd ..
       
-    - name: GO FMT
-      run: ./testing/travis-ci-gofmt.sh
-
-    - name: Test
-      run: ./testing/travis-ci-test.sh
+    - name: gabrielbb/xvfb-action GOFMT
+      uses: GabrielBB/xvfb-action@v1
+      with:
+          run: ./testing/travis-ci-gofmt.sh
+          
+    - name: gabrielbb/xvfb-action Test
+      uses: GabrielBB/xvfb-action@v1
+      with:
+          run: ./testing/travis-ci-test.sh
       
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -- -v
