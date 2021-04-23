@@ -1,5 +1,6 @@
 # The most complete, best-tested WebDriver client for Go
 
+[![Selenium](https://github.com/inluxc/selenium/actions/workflows/go.yml/badge.svg)](https://github.com/inluxc/selenium/actions/workflows/go.yml)
 [![GoDoc](https://godoc.org/github.com/tebeka/selenium?status.svg)](https://godoc.org/github.com/tebeka/selenium)
 [![Travis](https://travis-ci.org/tebeka/selenium.svg?branch=master)](https://travis-ci.org/tebeka/selenium)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tebeka/selenium)](https://goreportcard.com/report/github.com/tebeka/selenium)
